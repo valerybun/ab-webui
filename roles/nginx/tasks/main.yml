@@ -1,0 +1,8 @@
+- name: installing nginx
+  apt: pkg=nginx
+  sudo: yes
+
+- name: Configuring nginx Default
+  sudo: yes
+  template: src=main.conf dest=/etc/nginx/sites-enabled/default owner=root group=root mode=0644
+  notify: restart nginx

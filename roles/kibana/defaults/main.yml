@@ -1,0 +1,4 @@
+---
+kibana_ver : '3.1.2'
+kibana_mirror : 'https://download.elastic.co/kibana/kibana'
+#kibana_port : 5601

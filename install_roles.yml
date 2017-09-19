@@ -1,0 +1,25 @@
+---
+
+- name: configuration
+  hosts: ab-webui
+  sudo: yes
+  roles:
+    - apt
+    - timezone
+    - ntp_update
+    - role: monit
+      monit_daemon: 30
+      monit_enable_http: True
+      monit_eventqueue_slots: 101
+      monit_eventqueue_enable: True
+    - rsyslog
+    - kibana
+    - nginx
+    - ini
+  vars:
+    timezone: Europe/Minsk
+    cron_tasks:
+      - name: Update times
+        special_time: daily
+        user: 'ubuntu'
+        job: "sudo ntpdate ntp.psn.ru"
